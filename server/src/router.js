@@ -1,5 +1,6 @@
-const config  = require('./config')
-const AuthCtrl = require('./controller/Authentication')
+import config from './config'
+import AuthCtrl from './controller/Authentication'
+import Seed from './seed'
 
 const _all = (req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*')
@@ -16,5 +17,6 @@ module.exports = (router)=>{
   router.all(config.data.api+'*', _all),
   router.get(config.data.api + '/login', AuthCtrl.get)
   router.post(config.data.api + '/login', AuthCtrl.post)
+  router.get(config.data.api + '/seedUser', Seed.user)
   
 };

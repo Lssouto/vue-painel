@@ -1,7 +1,7 @@
-const model = require('../model')
-const connect = require('../service/mongoose')
+import Model from '../model'
+import Connect from '../service/mongoose'
 
-module.exports = {
+export default{
     get: (req,res)=>{
         res.send({
             data: 'foo',
@@ -10,12 +10,12 @@ module.exports = {
     },
     post: (req,res)=>{
         try{
-            const newUser = new model.userModel({
+            const newUser = new Model.userModel({
                 username: req.body.username,
                 password: req.body.pwd,
                 active: true
             })
-            connect.addUser(newUser);
+            Connect.addUser(newUser);
             res.send({
                 data: 'Sucesso',
                 status: true

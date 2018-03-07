@@ -7,5 +7,8 @@ export default{
     },
     post: (credentials)=>{
         return Api.post(AuthUrl, credentials );
+    },
+    seed : ()=>{
+        return Api.get('/seedUser');
     }
 }

@@ -1,21 +1,21 @@
-const express = require('express')
+import express from 'express'
 const app = express()
 
 //Add ons
     //Converte a requisição para JSON
-    const bodyParser = require('body-parser')
+    import bodyParser from 'body-parser'
     
     //Controle de acesso
-    //const cors = require('cors')
+    //import cors from 'cors'
     
     //Mostra os log de quem acessou, de onde e quando
-    const morgan = require('morgan')
+    import morgan from 'morgan'
     
     //Caminho normal do site
-    const path = require('path')
+    import path from 'path'
     
     //Config manual
-    const config = require('./config')
+    import config from './config'
 
 app.use(morgan('combined'))
 //app.use(cors())

@@ -4,7 +4,7 @@
       <form action="" v-on:submit.prevent="login">
         <div class="input-container">
           <label for="username">Login</label>
-          <input type="text" class="form-control" id="username" v-model="credentials.login">
+          <input type="text" class="form-control" id="username" v-model="credentials.username">
         </div>
         <div class="input-container">
           <label for="pwd">Password</label>
@@ -14,6 +14,7 @@
           <router-link tag="a" :to="{name: 'forgot-pwd'}">Esqueceu a senha ? </router-link>   
         </div>
         <button class="btn bg-main">Login</button>
+        <button @click="seed()" class="btn bg-main">seed</button>
       </form>
     </div>
   </div>
@@ -26,14 +27,18 @@ export default {
   data(){
     return {
       credentials:{
-        login: '',
+        username: '',
         pwd: ''
       }
     }
   },
-  methods:{
+  methods: {
     async login(){
       let data = await AuthS.post(this.credentials)
+      console.log(data);
+    },
+    async seed(){
+      let data = await AuthS.seed()
       console.log(data);
     }
   }
