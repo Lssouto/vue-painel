@@ -1,5 +1,5 @@
 import Model from '../model'
-import Connect from '../service/mongoose'
+import UserServ from '../service/user'
 
 export default{
     get: (req,res)=>{
@@ -15,7 +15,7 @@ export default{
                 password: req.body.pwd,
                 active: true
             })
-            Connect.addUser(newUser);
+            UserServ.addUser(newUser);
             res.send({
                 data: 'Sucesso',
                 status: true

@@ -1,4 +1,4 @@
-import connect from '../service/mongoose'
+import UserServ from '../service/user'
 import model from '../model'
 
 const seedUser = ()=>{
@@ -19,7 +19,8 @@ const seedUser = ()=>{
         }))
     }
     console.log('Sementes carregadas')
-    connect.addUser(users);
+    console.log('Salvando sementes ... ')
+    UserServ.addUsers(users);
 }
 
 export default {

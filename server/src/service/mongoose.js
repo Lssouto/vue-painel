@@ -14,23 +14,4 @@ const functions = {
         db.close();
     }
 }
-export default{
-    addUser:  async (user)=>{
-        functions.connect();
-
-        if(Array.isArray(user))
-            await user.forEach(function(item){
-                item.save(function (err, user) {
-                    if (err) return console.error(err);
-                    console.log('Salvo')
-                });
-            });      
-        
-            else
-                await user.save(function (err, user) {
-                    if (err) return console.error(err);
-                    console.log('Salvo')
-                });
-        functions.close();
-    }    
-}
+export default functions;
