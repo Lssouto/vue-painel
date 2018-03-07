@@ -33,7 +33,7 @@ export default {
   },
   methods:{
     async login(){
-      let data = await AuthS.get()
+      let data = await AuthS.post(this.credentials)
       console.log(data);
     }
   }

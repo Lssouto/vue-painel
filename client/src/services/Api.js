@@ -1,7 +1,5 @@
 const config = {
-    windowUrl : window.location.hostname,
-    port : ':8081',
-    ApiUrl : 'http://' + this.windowUrl + this.port + '/api',
+    ApiUrl : 'http://' + window.location.hostname + ':8081' + '/api',
     header : new Headers({
         'Content-Type': 'application/json',
         Accept: 'application/json',
@@ -15,11 +13,10 @@ const connect = (url, options)=>{
         .catch(err =>  console.log(err))
         
         else
-            return  fetch(ApiUrl + url,options)
+            return  fetch(config.ApiUrl + url,options)
             .then(response=> response.json())
             .catch(err =>  console.log(err))
 }
-
 export default{
     get: (url)=>{
         return connect(url);
