@@ -35,7 +35,15 @@ export default {
   methods: {
     async login(){
       let data = await AuthS.post(this.credentials)
-      console.log(data);
+      console.log(data)
+      if(data.status){
+        this.$store.dispatch('setToken', data.token)
+        this.$store.dispatch('setUser', data.data)
+        this.$router.push({name: 'Index'})
+      }
+      else{
+        console.log(data.error)
+      }
     },
     async seed(){
       let data = await AuthS.seed()
