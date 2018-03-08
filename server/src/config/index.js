@@ -1,6 +1,9 @@
 export default {
     data : {
         port: 8081,
-        api : '/api'
+        api : '/api',
+        auth: {
+            jwtSecret : process.env.JWT_SECRET || 'secret'
+        }
     }
 }

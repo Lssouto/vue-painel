@@ -6,7 +6,7 @@ export default {
         try{
             
             const newUser  = UserFact.create(req.body)
-            UserServ.addUser(newUser);
+            UserServ.create(newUser);
 
             res.send({
                 data: 'Sucesso',

@@ -20,6 +20,14 @@ const functions = {
             //console.log('Salvo')
             functions.close();
         });
+    },
+    getOne: (item, query, fields, callback)=>{
+        item.findOne(query, fields, (err, item) =>  {
+            if (err) return handleError(err);
+            //console.log(item)
+            callback(item);
+            functions.close();
+        });
     }
 }
 export default functions;
