@@ -15,8 +15,7 @@ const _all = (req, res, next) => {
 module.exports = (router)=>{
   
   router.all(config.data.api+'*', _all),
-  router.get(config.data.api + '/login', AuthCtrl.get)
-  router.post(config.data.api + '/login', AuthCtrl.post)
+  router.post(config.data.api + '/login', AuthCtrl.verify)
   router.get(config.data.api + '/seedUser', Seed.user)
   
 };

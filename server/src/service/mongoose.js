@@ -12,6 +12,14 @@ const functions = {
     },
     close: ()=>{
         db.close();
+    },
+    create: (item)=>{
+        functions.connect();
+        item.save(function (err, user) {
+            if (err) return console.error(err);
+            //console.log('Salvo')
+            functions.close();
+        });
     }
 }
 export default functions;
