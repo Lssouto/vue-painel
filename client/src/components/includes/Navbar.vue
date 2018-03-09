@@ -1,35 +1,64 @@
 <template>
     <nav id="navbar" :class="{expanded : status}">
         <div class="logo">
+			<span class="icon">
+				<span class="fa fa-users"></span>
+			</span>
             <span class="name">VuePainel</span>
         </div>
         <ul>
             <li>
-                <span class="fa fa-home"></span>
-                <span class="name">Home</span>
+                <a href="#">
+					<span class="icon">
+						<span class="fa fa-home"></span>
+					</span>
+					<span class="name">Homepage</span>
+				</a>
             </li>
             <li>
-                <span class="fa fa-users"></span>
-                <span class="name">Users</span>
+				<a href="#">
+					<span class="icon">
+						<span class="fa fa-users"></span>
+					</span>
+					<span class="name">Users</span>
+				</a>
             </li>
             <li class="dropdown-nav">
                 <input type="checkbox" name="games" id="games" />
                 <label for="games">
-                    <span class="fa fa-gamepad"></span>
-                    <span class="name">Games</span>
+					<span class="icon">
+                    	<span class="fa fa-gamepad"></span>
+					</span>
+                    <span class="name">Foo</span>
                 </label>
                 <ul class="dropdown-list">
-                    <li>foo</li>
-                    <li>foo</li>
+                    <li>
+						<a href="#">
+							Bar
+						</a>
+					</li>
+                    <li>
+						<a href="#">
+							foobar
+						</a>
+					</li>
                 </ul>
             </li>
             <li>
-                <span class="fa fa-square"></span>
-                <span class="name">Buttons</span>
+				<a href="#">
+					<span class="icon">
+						<span class="fa fa-square"></span>
+					</span>
+					<span class="name">Buttons</span>
+				</a>
             </li>
             <li>
-                <span class="fa fa-align-justify"></span>
-                <span class="name">Forms</span>
+				<a href="#">
+					<span class="icon">
+						<span class="fa fa-align-justify"></span>
+					</span>
+					<span class="name">Forms</span>
+				</a>
             </li>
         </ul>
     </nav>
@@ -58,7 +87,7 @@ export default {
     margin-left: -100%;
     top: 0;
     height: 100%;
-    @extend .fast-e;
+    @extend .slow-e;
     
 	input[type="checkbox"]{
 		display: none;
@@ -67,23 +96,6 @@ export default {
 	li{
 		position: relative;
 		overflow: hidden;
-		a,label{	
-			@extend .fast-e;
-			background-color: $main;
-			color: $white;
-		    margin: 0px;
-			display: block;
-			padding: 0 15px;
-			line-height: 53px;
-			color: $white;
-			font-weight: bolder;
-			cursor: pointer;
-			
-			&:hover,&:active,&:focus{
-				text-decoration: none;
-				background-color: darken($main,15%);
-			}
-		}
 
 		&.dropdown-nav{
 			
@@ -116,25 +128,34 @@ export default {
 				}
 			}
 		}
-		span.fa{
-			font-size: 22px;
-			margin-right: 5px;
+	}
+	a,label,.logo{	
+		@extend .fast-e;
+		background-color: $main;
+		color: $white;
+		margin: 0px;
+		display: block;
+		padding: 0 15px;
+		line-height: 53px;
+		color: $white;
+		font-weight: bolder;
+		cursor: pointer;
+		
+		display: flex;
+		align-items: flex-start;
+	
+		&:hover,&:active,&:focus{
+			text-decoration: none;
+			background-color: darken($main,15%);
 		}
 	}	
 	.logo{
 		position: relative;
 		background-color: lighten($black, 15%);	
-		padding: 10px 15px;
-		//height: 52px;
-		color: $white;
-        font-size: 24px;
-        word-wrap: none;
-		img{
-			position: absolute;
-			top: -15px;
-			left: 15px;
-			height: 65px;
-		}
+	}
+	span.fa{
+		font-size: 22px;
+		margin-right: 8px;
 	}
 	&.expanded{
 		margin-left: 0;
@@ -143,18 +164,38 @@ export default {
         position: relative;
         top: 0;
         left: 0;
-        max-width: 200px;
 		z-index: 1;
 		margin-left: 0;
-        width: initial;
-        height: 100%;
-		&.expanded{
+		width: 50px;
+		text-align: center;
+		span.name{
+			display: none;
+		}
+		span.fa{
+			font-size: 26px;
+			margin-right: 0;
+		}
+		a,label,.logo{
+			padding: 0;
+			display: block;
 			text-align: center;
-			span.fa{
-				font-size: 26px;
+		}
+		&.expanded{
+			text-align: left;
+			width: initial;
+			li{
+				a,label{
+					padding: 0 15px;
+					display: flex;
+					align-items: flex-start;
+
+				}
 			}
 			span.name{
-				display: none;
+				display: inline-block;
+			}
+			span.fa{
+				margin-right: 8px;
 			}
 		}
 	}

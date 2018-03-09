@@ -1,4 +1,7 @@
-//@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,700');
+//@import url("https://fonts.googleapis.com/css?family=Ubuntu:300,400,700");
+
+$fa-font-path: "~font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome.scss';
 
 @import "vars";
 @import "animation";

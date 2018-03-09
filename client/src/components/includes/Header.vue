@@ -1,7 +1,7 @@
 <template>
     <header class="row m-0 flex-align ">
         <button class="nav-toggle btn" @click="changeNav">
-        <span class="fa fa-bars">toggle Nav</span>
+        <span class="fa fa-bars"></span>
         </button>
         <div class="text-right options">
             <button class="userOption" @click="logout">Login</button>
@@ -81,7 +81,8 @@ header{
 		}
     }
     .options{
-    	padding-right: 60px;
+		padding-right: 60px;
+		width: 100%;
     }
 	@media (min-width: $sm) {
 		

@@ -7,6 +7,7 @@ import { sync } from 'vuex-router-sync'
 import store from '@/store/store'
   
   //import './assets/scss/main.scss'
+  
 
 Vue.config.productionTip = false
 
