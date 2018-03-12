@@ -1,13 +1,11 @@
 <template>
-  <div id="app" class="full-container">
-    <div class="flex-align">
-      <c-navbar :status="navbarExpandedStatus"/>
-      <div class="max">
-        <c-header @change-nav="navbarExpandedStatus = !navbarExpandedStatus"/>
-        <transition name="fade">
-          <router-view/>
-        </transition>
-      </div>  
+  <div id="app">
+    <c-navbar />
+    <div class="desktop-nav-margin">
+      <c-header />
+      <transition name="fade">
+        <router-view/>
+      </transition>
     </div>
   </div>
 </template>
@@ -17,11 +15,6 @@ import cHeader from '@/components/includes/Header'
 import cNavbar from '@/components/includes/Navbar'
 export default {
   name: 'App',
-  data(){
-    return {
-      navbarExpandedStatus: true
-    }
-  },
   components: {
     cHeader,
     cNavbar
@@ -30,14 +23,9 @@ export default {
 </script>
 
 <style lang="scss">
-.full-container{
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  & > div {
-    height: 100%;
+@media (min-width: $sm) {
+  .desktop-nav-margin{
+    margin-left: 50px;
   }
 }
 </style>

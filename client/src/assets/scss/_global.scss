@@ -22,6 +22,15 @@
 .m-0{
     margin: 0 !important
 }
+.text-right{
+    text-align: right;
+}
+.text-left{
+    text-align: left;
+}
+.text-center{
+    text-align: center;
+}
 @media  (max-width: $md){
     .desktop-only{
         display: none;
