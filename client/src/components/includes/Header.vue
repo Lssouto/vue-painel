@@ -1,7 +1,15 @@
 <template>
     <header>
         <div class="text-right options">
-			<dropdown class="user-option"/>	
+			<dropdown class="user-option">
+				<template slot="name">
+					{{ user | capitalize}}
+				</template>
+				<div slot="items">
+					<li>Meus Dados</li>
+					<li>Logout</li>
+				</div>
+			</dropdown>	
         </div>
     </header>
 </template>
@@ -22,7 +30,8 @@ export default {
     },
     computed:{
       ...mapState([
-        'isUserLoggedIn'
+        'isUserLoggedIn',
+        'user'
       ])
 	},
 	components: {
@@ -60,6 +69,10 @@ header{
 			&.dropdown-vue{
 				height: 55px;
 				padding: 0;
+				.dropdown-vue-menu{
+					left: initial;
+					right: 0;
+				}
 				.dropdown-vue-toggle{
 					height: 55px;
 					padding: 10px 25px;

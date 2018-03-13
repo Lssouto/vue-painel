@@ -53,12 +53,12 @@ export default {
             border-bottom: 2px solid $main;
             transform: rotate(45deg) translateY(-50%);
         }
-
     }
     
     .dropdown-vue-menu{
         @extend .fast-e;
         position: absolute;
+        min-width: 200px;
         top: 100%;
         left: 0;
         opacity: 0;
@@ -68,12 +68,17 @@ export default {
         font-size: 18px;
         font-weight: normal;
         li{
+            @extend .fast-e;
             color: $black;
             display: block;
             padding: 10px 25px;
             border-bottom: 1px solid $main;
+            cursor: pointer;
+            font-weight: bolder;
             &:hover{
-                border-bottom: 1px solid $secundary;
+                background-color: $main;
+                color: $white;
+                border-bottom: 1px solid $white;
             }
         }
     }

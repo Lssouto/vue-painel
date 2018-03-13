@@ -3,7 +3,8 @@ import App from './App'
 import router from './router'
 import { sync } from 'vuex-router-sync'
 import store from '@/store/store'
-  
+import Filters from '@/filters' 
+ 
   //import './assets/scss/main.scss'
   
 

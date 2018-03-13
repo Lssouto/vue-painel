@@ -70,19 +70,13 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
 export default {
     name: "Navbar",
 	data (){
 		return {
 			status: false
 		}
-	},
-    computed: {
-      ...mapState([
-        'isUserLoggedIn'
-      ])
-    },
+	}
 }
 </script>
 
@@ -95,6 +89,7 @@ export default {
 		margin-left: -100%;
 		top: 0;
 		height: 100%;
+		overflow-y: auto;
 		
 		input[type="checkbox"]{
 			display: none;
@@ -102,7 +97,6 @@ export default {
 		
 		li{
 			position: relative;
-			overflow: hidden;
 	
 			&.dropdown-nav{
 				
@@ -128,6 +122,9 @@ export default {
 							background-color: $secundary;
 							
 							&:hover,&:active,&:focus{
+								position: relative;
+								z-index: 25;
+								box-shadow: -8px 0 8px 3px rgba($white,0.5);
 								text-decoration: none;
 								background-color: darken($secundary,15%);
 							}
@@ -147,11 +144,13 @@ export default {
 			color: $white;
 			font-weight: bolder;
 			cursor: pointer;
-			
 			display: flex;
 			align-items: flex-start;
 		
 			&:hover,&:active,&:focus{
+				position: relative;
+				z-index: 25;
+				box-shadow: -8px 0 8px 3px rgba($white,0.3);
 				text-decoration: none;
 				background-color: darken($main,15%);
 			}
@@ -206,12 +205,13 @@ export default {
 	}
 	@media (min-width:$sm){
 		#navbar{
-			position: fixed;
+			position: absolute;
 			top: 0;
 			left: 0;
 			margin-left: 0;
 			width: 50px;
 			text-align: center;
+			overflow-y: initial;
 			span.name{
 				display: none;
 			}
@@ -230,7 +230,7 @@ export default {
 		&.expanded{
 			#navbar{
 				width: initial;
-				text-align: left;
+				// text-align: left;
 				span.name{
 					display: inline-block;
 				}
