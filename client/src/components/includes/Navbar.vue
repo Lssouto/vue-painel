@@ -28,25 +28,32 @@
 					</a>
 				</li>
 				<li class="dropdown-nav">
-					<input type="checkbox" name="games" id="games" />
-					<label for="games">
-						<span class="icon">
-							<span class="fa fa-gamepad"></span>
-						</span>
-						<span class="name">Foo</span>
-					</label>
-					<ul class="dropdown-list">
-						<li>
-							<a href="#">
-								Bar
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								foobar
-							</a>
-						</li>
-					</ul>
+					<dropdown animation="slide">
+						<template slot="name">
+							<span class="icon">
+								<span class="fa fa-gamepad"></span>
+							</span>
+							<span class="name">Foo</span>
+						</template>
+						<template slot="items">
+							<li>
+								<a href="#">
+									<span class="icon">
+										<span class="fa fa-home"></span>
+									</span>
+									<span class="name">Homepage</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="icon">
+										<span class="fa fa-home"></span>
+									</span>
+									<span class="name">Homepage</span>
+								</a>
+							</li>
+						</template>
+					</dropdown>	
 				</li>
 				<li>
 					<a href="#">
@@ -70,12 +77,16 @@
 </template>
 
 <script>
+import Dropdown from '@/components/plugins/Dropdown'
 export default {
     name: "Navbar",
 	data (){
 		return {
 			status: false
 		}
+	},
+	components: {
+		Dropdown
 	}
 }
 </script>
@@ -91,29 +102,25 @@ export default {
 		height: 100%;
 		overflow-y: auto;
 		
-		input[type="checkbox"]{
-			display: none;
-		}
-		
 		li{
-			position: relative;
-	
-			&.dropdown-nav{
-				
-				input[type="checkbox"] + label + ul{
-					@extend .fast-e;
-					position: absolute;
-					margin-left: -100%;
-				}
-				input[type="checkbox"]:checked + label + ul{
-					position: initial;
-					margin-left: 0;
-				}
-				.dropdown-list{
-					background-color: $main;
+			.dropdown-vue{
+				width: 100%;
+				//Remove the dropdown arrow
+				.dropdown-vue-toggle{
 					width: 100%;
+					&:after{
+						display: none;
+					}
+				}
+				.dropdown-vue-menu{
+					z-index: 125;
+					position: relative;
+					min-width: initial;
+					box-shadow: none;
 					li{
-						a,label{
+						padding: 0;
+						border-bottom: 0px;
+						a{
 							line-height: 35px;
 							color: $white;
 							font-weight: bolder;
@@ -133,7 +140,7 @@ export default {
 				}
 			}
 		}
-		a,label,.logo{	
+		a,.logo,.dropdown-vue-toggle{	
 			@extend .fast-e;
 			background-color: $main;
 			color: $white;
@@ -182,8 +189,8 @@ export default {
 		color: $white;
 		margin: 0;
 		z-index: 100;	
-		@extend .slow-e;
-		&:hover,&:active,&:focus{
+		@extend .fast-e;
+		&:hover{
 			color: $white;
 			text-decoration: none;		
 			background-color: rgba(255,255,255,0.3);	
@@ -202,6 +209,9 @@ export default {
 			left: 0;
 			background-color: $secundary;
 		}
+		.dropdown-vue-menu,.dropdown-vue-toggle{
+			text-align: left;
+		}
 	}
 	@media (min-width:$sm){
 		#navbar{
@@ -219,7 +229,7 @@ export default {
 				font-size: 26px;
 				margin-right: 0;
 			}
-			a,label,.logo{
+			a,.logo,.dropdown-vue-toggle{
 				padding: 0;
 				display: block;
 			}
@@ -230,7 +240,6 @@ export default {
 		&.expanded{
 			#navbar{
 				width: initial;
-				// text-align: left;
 				span.name{
 					display: inline-block;
 				}
@@ -238,7 +247,7 @@ export default {
 					padding-left: 60px;
 					padding-right: 10px;
 				}
-				a,label{
+				a,.dropdown-vue-toggle{
 					padding: 0 10px;
 					display: flex;
 					align-items: flex-start;

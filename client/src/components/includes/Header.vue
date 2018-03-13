@@ -1,14 +1,14 @@
 <template>
     <header>
         <div class="text-right options">
-			<dropdown class="user-option">
+			<dropdown class="user-option" animation="fade">
 				<template slot="name">
 					{{ user | capitalize}}
 				</template>
-				<div slot="items">
+				<template slot="items">
 					<li>Meus Dados</li>
 					<li>Logout</li>
-				</div>
+				</template>
 			</dropdown>	
         </div>
     </header>

@@ -5,12 +5,14 @@
             Dropdown
         </slot>
     </button>
-    <ul class="dropdown-vue-menu">
-        <slot name="items">
-            <li>foo</li>  
-            <li>Bar</li> 
-        </slot>
-    </ul>
+    <transition :name="animation">
+        <ul v-show="showMenu" class="dropdown-vue-menu">
+            <slot name="items">
+                <li>foo</li>  
+                <li>Bar</li> 
+            </slot>
+        </ul>
+    </transition> 
   </div>
 </template>
 
@@ -29,7 +31,8 @@ export default {
       }
   },
   props:[
-      'active'
+      'active',
+      'animation'
   ]
 }
 </script>
@@ -56,13 +59,10 @@ export default {
     }
     
     .dropdown-vue-menu{
-        @extend .fast-e;
         position: absolute;
         min-width: 200px;
         top: 100%;
         left: 0;
-        opacity: 0;
-        height: 0;
         background-color: $white;
         box-shadow: 0 0 15px 0 $light-gray;
         font-size: 18px;
@@ -89,11 +89,6 @@ export default {
             border-left: 2px solid $main;
             border-right: 0px;
             border-bottom: 0px;
-        }
-        .dropdown-vue-menu{
-            display: block;
-            height: initial;
-            opacity: 1;
         }
     }
 }
