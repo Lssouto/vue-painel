@@ -113,7 +113,7 @@ a{
     overflow: hidden;
     color: $secundary;
     &:after{
-        @include pseudo;
+        @include pseudo(absolute,block);
         bottom: -2px;
         height: 1px;
         left: 0;

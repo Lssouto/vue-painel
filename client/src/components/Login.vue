@@ -32,6 +32,10 @@ export default {
       }
     }
   },
+  beforeCreate (){
+    if(this.$store.state.isUserLoggedIn)
+      this.$router.push({name: 'Index'})
+  },
   methods: {
     async login(){
       let data = await AuthS.post(this.credentials)

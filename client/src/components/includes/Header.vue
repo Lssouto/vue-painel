@@ -1,13 +1,14 @@
 <template>
-    <header class="row m-0 flex-align ">
+    <header>
         <div class="text-right options">
-            <button class="userOption" @click="logout">Login</button>
+			<dropdown class="user-option"/>	
         </div>
     </header>
 </template>
 
 <script>
 import {mapState} from 'vuex'
+import Dropdown from '@/components/plugins/Dropdown'
 export default {
     name: "Header",
     methods: {
@@ -23,7 +24,10 @@ export default {
       ...mapState([
         'isUserLoggedIn'
       ])
-    }
+	},
+	components: {
+		Dropdown
+	}
 }
 </script>
 
@@ -38,32 +42,34 @@ header{
 	font-weight: bolder;
 	height: 55px;
 	
-	.userOption{
-		padding: 10px 15px;
-		display: inline-block;
-		text-decoration: none;
-		background: none;
-		border: 0px;
-		color: $white;
-		cursor: pointer;
-		&:hover{
-			text-decoration: none;		
-			background-color: rgba(255,255,255,0.3);	
+	.options{
+		.user-option{
+			display:inline-block;
+			vertical-align: top;
+			height: 35px;
+			padding: 10px 15px;
+			background-color: $medium-gray;
+			@extend .fast-e;
+			border-bottom: 0px;
+			color: $white;
+			margin: 0 0 0 1px;
+			&:hover{
+				text-decoration: none;		
+				background-color: lighten($medium-gray,10%);
+			}
+			&.dropdown-vue{
+				height: 55px;
+				padding: 0;
+				.dropdown-vue-toggle{
+					height: 55px;
+					padding: 10px 25px;
+					color: $white;
+					&:after{
+						border-color: $white;
+					}
+				}
+			}
 		}
-	}
-	a:link,a:visited{
-		color: $white;
-		font-size: 20px;
-	}
-	
-    .options{
-		//padding-right: 60px;
-		width: 100%;
-    }
-	@media (min-width: $sm) {
-	    .options{
-	    	padding-right: 0;
-	    }
 	}
 }
 </style>
