@@ -7,7 +7,7 @@
 				</template>
 				<template slot="items">
 					<li>Meus Dados</li>
-					<li>Logout</li>
+					<li @click="logout">Logout</li>
 				</template>
 			</dropdown>	
         </div>
