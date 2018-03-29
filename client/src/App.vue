@@ -1,12 +1,15 @@
 <template>
   <div id="app">
+
     <c-navbar />
+
     <div class="desktop-nav-margin">
       <c-header />
       <transition name="fade">
         <router-view/>
       </transition>
     </div>
+
   </div>
 </template>
 

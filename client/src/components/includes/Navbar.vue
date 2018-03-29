@@ -3,7 +3,7 @@
 		<button class="navbar-toggle btn" @click="status = !status">
 			<span class="fa fa-bars"></span>
 		</button>
-		<nav id="navbar">
+		<nav id="navbar" :style="navHeight">
 			<div class="logo">
 				<span class="icon">
 					<span class="fa fa-users"></span>
@@ -82,11 +82,17 @@ export default {
     name: "Navbar",
 	data (){
 		return {
-			status: false
+			status: false,
+			navHeight: {
+				'min-height': '100%'
+			}
 		}
 	},
 	components: {
 		Dropdown
+	},
+	mounted (){
+		this.navHeight['min-height'] = document.body.offsetHeight + 'px';
 	}
 }
 </script>
@@ -99,7 +105,7 @@ export default {
 		z-index: 75;
 		margin-left: -100%;
 		top: 0;
-		height: 100%;
+		// height: 100%;
 		overflow-y: auto;
 		
 		li{

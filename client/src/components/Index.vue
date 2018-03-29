@@ -9,16 +9,10 @@
                         <td>Código</td>
                         <td>Nome</td>
                         <td>Ativo</td>
-                        <td>Código</td>
-                        <td>Nome</td>
-                        <td>Ativo</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="user in users" :key="user.cd">
-                        <td>{{user.id}}</td>
-                        <td>{{user.name}}</td>
-                        <td><vs-switch vs-type="primary" v-model="user.isActive" @change="putUserState(user)"/></td>
                         <td>{{user.id}}</td>
                         <td>{{user.name}}</td>
                         <td><vs-switch vs-type="primary" v-model="user.isActive" @change="putUserState(user)"/></td>
