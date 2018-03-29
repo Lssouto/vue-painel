@@ -42,6 +42,9 @@
     @media (min-width:$md) {
         width: 1190px;
     }
+    &.table-responsive{
+        overflow-x: auto;
+    }
 }
 .bg-main{
     background-color: $main;
@@ -71,6 +74,7 @@
     cursor: pointer;
     margin-top: 25px;
     font-weight: bolder;
+    border-radius: 0;
 
     @extend .fast-e;
 }
@@ -127,6 +131,40 @@ a{
         color: lighten($secundary,15%);
         &:after{
             width: 100%;
+        }
+    }
+}
+table{
+
+    width: 100%;
+    thead{
+        background-color: lighten($main,8%);
+        & > tr > td{
+            padding: 15px;
+            color: $white;
+            &:first-child{
+                border-right: 0px;
+            }
+            &:last-child{
+                border-left: 0px;
+            }
+        }
+    }
+    tbody{
+        & > tr{
+            @extend .fast-e;
+            & > td{
+                border-bottom: 1px solid $light-gray;
+                border-top: 0px;
+                padding: 6px 15px;
+                color: $black;
+                label{
+                    justify-content: flex-start;
+                }
+            }   
+            &:hover{
+                background-color: lighten($light-gray,8%);
+            }
         }
     }
 }

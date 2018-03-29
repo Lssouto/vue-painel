@@ -4,7 +4,11 @@ import router from './router'
 import { sync } from 'vuex-router-sync'
 import store from '@/store/store'
 import Filters from '@/filters' 
- 
+
+import VueSax from 'vuesax'
+import 'vuesax/dist/vuesax.min.css'
+Vue.use(VueSax)
+
   //import './assets/scss/main.scss'
   
 
