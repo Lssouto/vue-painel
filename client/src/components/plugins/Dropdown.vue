@@ -50,11 +50,12 @@ export default {
         margin: 0;
         &:after{
             @include pseudo(initial,inline-block);
+            @extend .fast-e;
             height: 6px;
             width: 6px;
             border-right: 2px solid $main;
             border-bottom: 2px solid $main;
-            transform: rotate(45deg) translateY(-50%);
+            transform: rotate(45deg) translate3d(0, -50%, 0);
         }
     }
     
@@ -85,10 +86,7 @@ export default {
 
     &.active{
         .dropdown-vue-toggle:after{
-            border-top: 2px solid $main;
-            border-left: 2px solid $main;
-            border-right: 0px;
-            border-bottom: 0px;
+            transform: rotate(-135deg) translate3d(-2px,2px, 0);
         }
     }
 }
