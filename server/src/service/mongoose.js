@@ -20,10 +20,9 @@ const functions = {
     },
     create: (item)=>{
         console.log(item);
-        console.log('\n');
         functions.connect();
         item.save(function (err, user) {
-            if (err) return console.error(err);
+            if (err) return functions.handleError();
             //console.log('Salvo') 
             functions.close()
         });
@@ -31,11 +30,15 @@ const functions = {
     getOne: (item, query, fields, callback)=>{
         functions.connect();
         item.findOne(query, fields, (err, item) =>  {
-            if (err) return handleError(err);
+            if (err) return functions.handleError(err);
             //console.log(item)
             functions.close();
             callback(item);
         });
+    },
+    handleError(err){
+        console.error(err);
+        functions.close();
     }
 }
 //functions.connect();

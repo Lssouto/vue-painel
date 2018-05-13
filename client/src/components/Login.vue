@@ -11,7 +11,7 @@
           <input type="password" class="form-control" id="pwd" v-model="credentials.pwd">
         </div>
         <div class="forgot-pwd">
-          <router-link tag="a" :to="{name: 'forgot-pwd'}">Esqueceu a senha ? </router-link>   
+          <router-link tag="a" :to="{name: 'Forgot-pwd'}">Esqueceu a senha ? </router-link>   
         </div>
         <button class="btn bg-main">Login</button>
         <button @click="seed()" class="btn bg-main">seed</button>
@@ -32,20 +32,23 @@ export default {
       }
     }
   },
-  beforeCreate (){
-    console.log(this.$store.state.isUserLoggedIn)
-    if(this.$store.state.isUserLoggedIn)
-      this.$router.push({name: 'Index'})
+  async mounted (){
+    const stillValid = (await AuthS.validate());
+    console.log(stillValid)
+    
+    if(this.$store.state.token){
+      this.$router.push({name: 'Painel'})
+    }
+      
   },
   methods: {
     async login(){
       let data = await AuthS.post(this.credentials)
-      console.log(data)
       if(data.status){
         this.$store.dispatch('setToken', data.token)
         this.$store.dispatch('setUser', data.data)
         //token change isUserLoggedIn
-        this.$router.push({name: 'Index'})
+        this.$router.push({name: 'Painel'})
       }
       else{
         console.log(data.error)

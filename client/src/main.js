@@ -21,12 +21,17 @@ new Vue({
   router,
   store,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  beforeMount(){
+    if(!store.state.isUserLoggedIn)
+      this.$router.push({
+        name: 'Login'
+      })
+  }
 })
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record=> record.meta.login)) {
-    console.log('Logged:' + store.state.isUserLoggedIn)
     if(!store.state.isUserLoggedIn){
       next({
         name : 'Login'

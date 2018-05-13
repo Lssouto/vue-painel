@@ -10,5 +10,8 @@ export default{
     },
     seed : ()=>{
         return Api.get('/seedUser');
+    },
+    validate(){
+        return Api.get('/validateToken');
     }
 }

@@ -25,7 +25,7 @@
 
 <script>
 export default {
-    name: "Homepage",
+    name: "Painel",
     data(){
         return{
             users: [

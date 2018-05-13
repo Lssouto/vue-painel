@@ -1,11 +1,15 @@
+import store from '../store/store';
+
 const config = {
     ApiUrl : 'http://' + window.location.hostname + ':8081' + '/api',
     header : new Headers({
         'Content-Type': 'application/json',
-        Accept: 'application/json',
+        'Accept': 'application/json',
+        'Authorization': store.state.token
     })
 }
 const connect = (url, options)=>{
+    console.log(config.header)
     if(!options)
 
         return  fetch(config.ApiUrl + url)
@@ -19,7 +23,10 @@ const connect = (url, options)=>{
 }
 export default{
     get: (url)=>{
-        return connect(url);
+        return connect(url,{
+            method : 'get',
+            headers : config.header
+        });
     },
     post:  (url, data)=>{
         return connect(url,{
@@ -37,7 +44,8 @@ export default{
     },
     del: (url, data)=>{
         return connect ( url + '/' + data, {
-            method: "delete"
+            method: "delete",
+            headers: config.header
         })
     }
 }

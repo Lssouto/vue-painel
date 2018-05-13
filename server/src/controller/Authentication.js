@@ -20,6 +20,8 @@ export default {
                         data: user.username,
                         status: true,
                         msg: 'Login Realizado',
+                        token: 'token'
+                        //temporary Token
                         // token: await jwtSignUser({
                         //     username: user.username,
                         //     id : user._id 
@@ -42,5 +44,24 @@ export default {
                 error: e + ''
             })
         }
-    }   
+    },
+    validate(req,res){
+        try{
+            const token = req.header('Authorization');
+            if(token == 'tokenmaroto')
+                res.send({
+                    status: true,
+                    data: null,
+                    msg: 'Verifyng token'
+                })
+                else
+                throw 'invalid Token';
+        }catch(e){
+            res.send({
+                status: false,
+                error: e + ''
+            })
+        }
+        
+    }
 }
