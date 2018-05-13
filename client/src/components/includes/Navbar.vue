@@ -84,7 +84,7 @@ export default {
 		return {
 			status: false,
 			navHeight: {
-				'min-height': '100%'
+				'height': '100%'
 			}
 		}
 	},
@@ -96,7 +96,7 @@ export default {
 	},
 	methods : {
 		putNavMinHeight(){
-			this.navHeight['min-height'] = document.body.offsetHeight + 'px';	
+			this.navHeight['height'] = document.window.offsetHeight + 'px';	
 		}	
 	},
 	watch : {
@@ -112,10 +112,12 @@ export default {
 	#navbar{
 		background: $black;
 		position: fixed;
-		z-index: 75;
-		margin-left: -100%;
+		z-index: 200;
 		top: 0;
+		width: 100%;
 		overflow-y: auto;
+		transform: translate3d(-100%,0,0);
+		@extend .fast-e;
 		
 		li{
 			.dropdown-vue{
@@ -128,7 +130,7 @@ export default {
 					}
 				}
 				.dropdown-vue-menu{
-					z-index: 125;
+					z-index: 225;
 					position: relative;
 					min-width: initial;
 					box-shadow: none;
@@ -145,7 +147,7 @@ export default {
 							
 							&:hover,&:active,&:focus{
 								position: relative;
-								z-index: 25;
+								z-index: 125;
 								box-shadow: -8px 0 8px 3px rgba($white,0.5);
 								text-decoration: none;
 								background-color: darken($secundary,15%);
@@ -171,7 +173,7 @@ export default {
 		
 			&:hover,&:active,&:focus{
 				position: relative;
-				z-index: 25;
+				z-index: 225;
 				box-shadow: -8px 0 8px 3px rgba($white,0.3);
 				text-decoration: none;
 				background-color: darken($main,15%);
@@ -203,7 +205,7 @@ export default {
 		border: 0px;
 		color: $white;
 		margin: 0;
-		z-index: 100;	
+		z-index: 300;	
 		@extend .fast-e;
 		&:hover{
 			color: $white;
@@ -214,14 +216,13 @@ export default {
 	}
 	&.expanded{
 		#navbar{
-			margin-left: 0;
+			transform: translate3d(0,0,0);
 			.logo{
-				padding-left: 60px;
-				padding-right: 10px;
+				transform: translate3d(55px,0,0);
+				width: calc( 100% - 55px);
 			}
 		}
 		.navbar-toggle{
-			left: 0;
 			background-color: $secundary;
 		}
 		.dropdown-vue-menu,.dropdown-vue-toggle{
@@ -233,10 +234,11 @@ export default {
 			position: absolute;
 			top: 0;
 			left: 0;
-			margin-left: 0;
 			width: 50px;
-			text-align: center;
 			overflow-y: initial;
+			text-align: center;
+			transform: translate3d(0,0,0);
+			
 			span.name{
 				display: none;
 			}
@@ -254,13 +256,9 @@ export default {
 		}
 		&.expanded{
 			#navbar{
-				width: initial;
+				width: 200px;
 				span.name{
 					display: inline-block;
-				}
-				.logo{
-					padding-left: 60px;
-					padding-right: 10px;
 				}
 				a,.dropdown-vue-toggle{
 					padding: 0 10px;
@@ -270,6 +268,9 @@ export default {
 				span.fa{
 					margin-right: 8px;
 				}
+			}
+			.navbar-toggle{
+				transform: translate3d(-50px,0,0);
 			}
 		}
 	}
