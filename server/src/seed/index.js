@@ -3,11 +3,11 @@ import UserFact from '../factory/user'
 
 const seedUser = async ()=>{
     const admin = UserFact.create({ username: 'admin',
-        pwd: 'admin',
+        password: 'admin',
         active: true
     })
     
-    UserServ.addUser(admin)
+    UserServ.create(admin)
 }
 
 export default {

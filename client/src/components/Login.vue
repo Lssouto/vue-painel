@@ -33,6 +33,7 @@ export default {
     }
   },
   beforeCreate (){
+    console.log(this.$store.state.isUserLoggedIn)
     if(this.$store.state.isUserLoggedIn)
       this.$router.push({name: 'Index'})
   },
@@ -43,6 +44,7 @@ export default {
       if(data.status){
         this.$store.dispatch('setToken', data.token)
         this.$store.dispatch('setUser', data.data)
+        //token change isUserLoggedIn
         this.$router.push({name: 'Index'})
       }
       else{
@@ -66,7 +68,7 @@ export default {
   height: 100%;
   top: 0;
   left: 0;
-  z-index: 50;
+  z-index: 100;
 }
 .painel{
   position: absolute;

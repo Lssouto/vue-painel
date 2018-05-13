@@ -20,10 +20,10 @@ export default {
                         data: user.username,
                         status: true,
                         msg: 'Login Realizado',
-                        token: await jwtSignUser({
-                            username: user.username,
-                            id : user._id 
-                        })
+                        // token: await jwtSignUser({
+                        //     username: user.username,
+                        //     id : user._id 
+                        // })
                     })
                 }
                 else{

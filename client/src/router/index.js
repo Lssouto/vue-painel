@@ -26,6 +26,11 @@ export default new Router({
         login: true
       }
     },
+    {
+      path: '*',
+      name: '404',
+      component: Login
+    }
   ],
   mode: "history"
 })

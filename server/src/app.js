@@ -26,9 +26,9 @@ require('./router')(app)
 //Caminho statico pra imagens e arquivos 
 app.use(express.static(path.join(__dirname, '../../public' )));
 
-app.listen(process.env.PORT || config.data.port)
+app.listen(config.data.port)
 
-if(process.env.PORT)
-    console.log("\nServidor Rodando -> https://localhost:" + process.env.PORT + "\n")
-    else
+// if(process.env.PORT)
+//     console.log("\nServidor Rodando -> https://localhost:" + process.env.PORT + "\n")
+//     else
         console.log("\nServidor Rodando -> https://localhost:" + config.data.port + "\n")

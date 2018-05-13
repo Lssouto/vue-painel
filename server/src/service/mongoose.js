@@ -10,7 +10,7 @@ db.on('disconnected',()=> { console.log('Saindo . . . ')});
 const functions = {
     connect : ()=>{
         try {
-            mongoose.connect("mongodb://"+(process.env.IP || "localhost")+"/dbpainel")
+            mongoose.connect("mongodb://"+(process.env.IP || "localhost:27017")+"/dbpainel")
         }catch(e){
             console.log('error: ' + e)
         }
@@ -19,6 +19,8 @@ const functions = {
         db.close();
     },
     create: (item)=>{
+        console.log(item);
+        console.log('\n');
         functions.connect();
         item.save(function (err, user) {
             if (err) return console.error(err);

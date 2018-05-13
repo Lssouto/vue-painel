@@ -92,7 +92,17 @@ export default {
 		Dropdown
 	},
 	mounted (){
-		this.navHeight['min-height'] = document.body.offsetHeight + 'px';
+		this.putNavMinHeight();
+	},
+	methods : {
+		putNavMinHeight(){
+			this.navHeight['min-height'] = document.body.offsetHeight + 'px';	
+		}	
+	},
+	watch : {
+		'document.body.offsetHeight' : ()=>{
+			this.putNavMinHeight();
+		}	
 	}
 }
 </script>
@@ -105,7 +115,6 @@ export default {
 		z-index: 75;
 		margin-left: -100%;
 		top: 0;
-		// height: 100%;
 		overflow-y: auto;
 		
 		li{

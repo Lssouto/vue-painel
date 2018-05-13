@@ -25,8 +25,8 @@ new Vue({
 })
 
 router.beforeEach((to, from, next) => {
-   
   if (to.matched.some(record=> record.meta.login)) {
+    console.log('Logged:' + store.state.isUserLoggedIn)
     if(!store.state.isUserLoggedIn){
       next({
         name : 'Login'
