@@ -86,7 +86,7 @@ export default {
 
     &.active{
         .dropdown-vue-toggle:after{
-            transform: rotate(-135deg) translate3d(-2px,2px, 0);
+            transform: scale(1,-1) rotate(45deg) translate3d(2px,-2px, 0);
         }
     }
 }

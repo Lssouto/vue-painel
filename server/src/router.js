@@ -9,18 +9,37 @@ const _all = (req, res, next) => {
     res.header('Access-Control-Allow-Methods', 'OPTIONS,GET,POST,PUT,DELETE')
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With')
     
-    const AUTHTOKEN = req.header('Authorization')
-    
     if ('OPTIONS' === req.method) {
       return res.sendStatus(200)
     }
     
-    if( AUTHTOKEN == 'null' || !AUTHTOKEN && req.path !== apiLocation + '/login' ){
-      res.redirect(apiLocation + '/login')
+    
+    const AUTHTOKEN = req.header('Authorization')
+    console.log(AUTHTOKEN)
+    
+    //Header de autorizacao veio vazio ou null?
+    if( AUTHTOKEN == 'null' || !AUTHTOKEN){
+      
+      //Ele esta tentando logar ou se cadastracar?
+      if(
+          req.path === apiLocation + '/login' 
+          // || req.path === apiLocation + '/user/new'
+          // || req.path === apiLocation + '/user/fgtPassword'
+        )
+        next()
+      else
+        res.redirect(apiLocation + '/login')
     }
     else{
-      next()
-    }  
+      if(req.path === apiLocation + '/auth/logout')
+        next()
+      else
+        res.status(403).send({
+          status: false,
+          message: 'Token Expirado',
+          data: null
+        })
+    }
   
 }
 

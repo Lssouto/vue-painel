@@ -14,6 +14,18 @@ function jwtSignUser (user){
 export default {
     verify: (req,res)=>{
         try {
+            res.send({
+                        data: "Mano",
+                        status: true,
+                        msg: 'Login Realizado',
+                        token: 'token'
+                        //temporary Token
+                        // token: await jwtSignUser({
+                        //     username: user.username,
+                        //     id : user._id 
+                        // })
+                    })
+            return;
             UserServ.getOne(Model.userModel, req.body.username, async (user)=>{
                 if(user.password === req.body.pwd){
                     res.send({

@@ -84,7 +84,7 @@ export default {
 		return {
 			status: false,
 			navHeight: {
-				'height': '100%'
+				'min-height': '100%'
 			}
 		}
 	},
@@ -96,8 +96,16 @@ export default {
 	},
 	methods : {
 		putNavMinHeight(){
-			this.navHeight['height'] = document.window.offsetHeight + 'px';	
-		}	
+			this.navHeight['min-height'] = this.getBrowserHeight() + 'px';	
+		},
+		getBrowserHeight(){
+        	var D = document;
+		    return Math.max(
+		        D.body.scrollHeight, D.documentElement.scrollHeight,
+		        D.body.offsetHeight, D.documentElement.offsetHeight,
+		        D.body.clientHeight, D.documentElement.clientHeight
+		    );
+		}
 	},
 	watch : {
 		'document.body.offsetHeight' : ()=>{
@@ -240,15 +248,27 @@ export default {
 			transform: translate3d(0,0,0);
 			
 			span.name{
-				display: none;
+				display: inline-block;
+				position: absolute;
+				left: 50px;
+				top: 50%;
+				transform: translate3d(0,-50%,0);
 			}
 			span.fa{
 				font-size: 26px;
 				margin-right: 0;
 			}
+			
 			a,.logo,.dropdown-vue-toggle{
 				padding: 0;
 				display: block;
+				overflow: hidden;
+				text-align: left;
+				span.icon{
+					text-align: center;
+					width: 50px;
+					display: inline-block;
+				}
 			}
 		}
 		.navbar-toggle{
@@ -257,16 +277,8 @@ export default {
 		&.expanded{
 			#navbar{
 				width: 200px;
-				span.name{
-					display: inline-block;
-				}
-				a,.dropdown-vue-toggle{
-					padding: 0 10px;
-					display: flex;
-					align-items: flex-start;
-				}
-				span.fa{
-					margin-right: 8px;
+				a,.logo,.dropdown-vue-toggle{
+					padding-right: 10px;
 				}
 			}
 			.navbar-toggle{
