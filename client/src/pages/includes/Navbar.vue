@@ -120,7 +120,7 @@ export default {
 	#navbar{
 		background: $black;
 		position: fixed;
-		z-index: 100;
+		z-index: 75;
 		top: 0;
 		width: 100%;
 		overflow-y: auto;
