@@ -120,7 +120,7 @@ export default {
 	#navbar{
 		background: $black;
 		position: fixed;
-		z-index: 200;
+		z-index: 100;
 		top: 0;
 		width: 100%;
 		overflow-y: auto;
@@ -213,7 +213,7 @@ export default {
 		border: 0px;
 		color: $white;
 		margin: 0;
-		z-index: 300;	
+		z-index: 100;	
 		@extend .fast-e;
 		&:hover{
 			color: $white;
