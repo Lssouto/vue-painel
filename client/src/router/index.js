@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/components/Login'
-import ForgotPwd from '@/components/Forgot-pwd'
-import Painel from '@/components/Painel'
+import Login from '@/pages/Login'
+import ForgotPwd from '@/pages/Forgot-pwd'
+import Painel from '@/pages/Painel'
 
 Vue.use(Router)
 

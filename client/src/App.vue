@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import cHeader from '@/components/includes/Header'
-import cNavbar from '@/components/includes/Navbar'
+import cHeader from '@/pages/includes/Header'
+import cNavbar from '@/pages/includes/Navbar'
 export default {
   name: 'App',
   components: {

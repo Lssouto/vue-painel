@@ -77,7 +77,7 @@
 </template>
 
 <script>
-import Dropdown from '@/components/plugins/Dropdown'
+import Dropdown from '@/components/Dropdown'
 export default {
     name: "Navbar",
 	data (){

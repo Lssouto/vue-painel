@@ -16,7 +16,7 @@
 
 <script>
 import {mapState} from 'vuex'
-import Dropdown from '@/components/plugins/Dropdown'
+import Dropdown from '@/components/Dropdown'
 export default {
     name: "Header",
     methods: {
