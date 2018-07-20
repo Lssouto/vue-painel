@@ -1,7 +1,16 @@
 <template>
     <div class="container">
-        <h2 class="section-title">Examples</h2>
-        <h3>Datatable</h3>
+        <h2 class="h-title">Examples</h2>
+        <h3 class="h-sub-title">Datatable</h3>
+        <Datepicker 
+            lang="pt-br" 
+            v-model="date" 
+            :time-picker-options="timePickerOptions" 
+            type="datetime"
+            :confirm="true"
+            :minute-step="5"
+            format="dd-MM-yyyy HH:mm:ss"
+        />
         <div class="container table-responsive">
             <table border="0" cellpadding="0" cellspacing="0">
                 <thead>
@@ -15,7 +24,7 @@
                     <tr v-for="user in users" :key="user.cd">
                         <td>{{user.id}}</td>
                         <td>{{user.name}}</td>
-                        <td><vs-switch vs-type="primary" v-model="user.isActive" @change="putUserState(user)"/></td>
+                        <td><el-switch v-model="user.isActive" /></td>
                     </tr>
                 </tbody>
             </table>
@@ -25,6 +34,7 @@
 </template>
 
 <script>
+import Datepicker from 'vue2-datepicker' 
 export default {
     name: "Painel",
     data(){
@@ -43,18 +53,24 @@ export default {
                 {id: 11, name: 'Maria', isActive: false},
                 {id: 12, name: 'Maria', isActive: false},
                 {id: 13, name: 'Maria', isActive: false},
-            ]
+            ],
+            timePickerOptions: {
+                start: '00:00',
+                step: '00:30',
+                end: '23:30'
+            },
+            date: 0
         }
     },
     methods: {
-        putUserState(user){
-            this.$vs.notify({title:'Alteração de status',text:'Usuário: ' + user.name + ' Alterado com sucesso',color:'primary', icon:'check_box', fixed: true})
-        }
+    },
+    components: {
+        Datepicker
     }
 }
 </script>
 
-<style>
+<style lang="scss">
 
 </style>
 

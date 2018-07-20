@@ -65,7 +65,7 @@ export default {
         top: 100%;
         left: 0;
         background-color: $white;
-        box-shadow: 0 0 15px 0 $light-gray;
+        box-shadow: 0 0 2px 0 $light-gray;
         font-size: 18px;
         font-weight: normal;
         li{

@@ -8,3 +8,11 @@ $fa-font-path: "~font-awesome/fonts";
 @import "mixins";
 @import "override";
 @import "global";
+
+/* theme color */
+$--color-primary: #123123;
+
+/* icon font path, required */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@import "~element-ui/packages/theme-chalk/src/index";

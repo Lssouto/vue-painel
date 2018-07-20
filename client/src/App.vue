@@ -20,7 +20,7 @@ export default {
   name: 'App',
   components: {
     cHeader,
-    cNavbar
+    cNavbar,
   }
 }
 </script>

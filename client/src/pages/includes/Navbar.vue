@@ -138,6 +138,7 @@ export default {
 					}
 				}
 				.dropdown-vue-menu{
+					margin-top:3px;
 					z-index: 225;
 					position: relative;
 					min-width: initial;
@@ -156,7 +157,6 @@ export default {
 							&:hover,&:active,&:focus{
 								position: relative;
 								z-index: 125;
-								box-shadow: -8px 0 8px 3px rgba($white,0.5);
 								text-decoration: none;
 								background-color: darken($secundary,15%);
 							}
@@ -182,7 +182,6 @@ export default {
 			&:hover,&:active,&:focus{
 				position: relative;
 				z-index: 225;
-				box-shadow: -8px 0 8px 3px rgba($white,0.3);
 				text-decoration: none;
 				background-color: darken($main,15%);
 			}
@@ -277,9 +276,6 @@ export default {
 		&.expanded{
 			#navbar{
 				width: 200px;
-				a,.logo,.dropdown-vue-toggle{
-					padding-right: 10px;
-				}
 			}
 			.navbar-toggle{
 				transform: translate3d(-50px,0,0);
