@@ -5,11 +5,12 @@ import { sync } from 'vuex-router-sync'
 import store from '@/store/store'
 import Filters from '@/filters' 
 
-import ElementUI from 'element-ui';
+import Element from 'element-ui';
 // import 'element-ui/lib/theme-chalk/index.css';
+import './assets/scss/element-variables.scss'
 import locale from 'element-ui/lib/locale/lang/pt-br'
 
-Vue.use(ElementUI,{ locale })
+Vue.use(Element,{ locale })
 
 Vue.config.productionTip = false
 
