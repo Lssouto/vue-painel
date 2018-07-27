@@ -5,12 +5,21 @@ import { sync } from 'vuex-router-sync'
 import store from '@/store/store'
 import Filters from '@/filters' 
 
-import Element from 'element-ui';
-// import 'element-ui/lib/theme-chalk/index.css';
-import './assets/scss/element-variables.scss'
-import locale from 'element-ui/lib/locale/lang/pt-br'
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
 
-Vue.use(Element,{ locale })
+Vue.use(Vuetify, {
+  theme: {
+    primary: "#1b84aa",
+    secondary: "#a35e10",
+    accent: "#9c27b0",
+    error: "#f44336",
+    warning: "#ffeb3b",
+    info: "#2196f3",
+    success: "#4caf50"
+  }
+})
+
 
 Vue.config.productionTip = false
 

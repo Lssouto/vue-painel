@@ -1,7 +1,10 @@
 <template>
 	<div class="nav" :class="{expanded : status}">
 		<button class="navbar-toggle btn" @click="status = !status">
-			<span class="fa fa-bars"></span>
+			<span class="icon-bar top-bar"></span>
+		    <span class="icon-bar middle-bar"></span>
+			<span class="icon-bar bottom-bar"></span>
+			<!--<span class="fa fa-bars"></span>-->
 		</button>
 		<nav id="navbar" :style="navHeight">
 			<div class="logo">
@@ -12,12 +15,12 @@
 			</div>
 			<ul class="nav-list">
 				<li>
-					<a href="#">
+					<router-link :to="{name: 'Painel'}" tag="a">
 						<span class="icon">
 							<span class="fa fa-home"></span>
 						</span>
 						<span class="name">Homepage</span>
-					</a>
+					</router-link>
 				</li>
 				<li>
 					<a href="#">
@@ -64,12 +67,12 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<router-link tag="a" :to="{name : 'Forms'}">
 						<span class="icon">
 							<span class="fa fa-align-justify"></span>
 						</span>
 						<span class="name">Forms</span>
-					</a>
+					</router-link>
 				</li>
 			</ul>
 		</nav>
@@ -130,7 +133,8 @@ export default {
 		li{
 			.dropdown-vue{
 				width: 100%;
-				//Remove the dropdown arrow
+				display: block;
+				
 				.dropdown-vue-toggle{
 					width: 100%;
 					&:after{
@@ -138,11 +142,11 @@ export default {
 					}
 				}
 				.dropdown-vue-menu{
-					margin-top:3px;
 					z-index: 225;
 					position: relative;
 					min-width: initial;
 					box-shadow: none;
+					
 					li{
 						padding: 0;
 						border-bottom: 0px;
@@ -167,7 +171,7 @@ export default {
 		}
 		a,.logo,.dropdown-vue-toggle{	
 			@extend .fast-e;
-			background-color: $main;
+			background-color: $primary;
 			color: $white;
 			margin: 0px;
 			display: block;
@@ -183,7 +187,7 @@ export default {
 				position: relative;
 				z-index: 225;
 				text-decoration: none;
-				background-color: darken($main,15%);
+				background-color: darken($primary,15%);
 			}
 		}	
 		.logo{
@@ -212,8 +216,20 @@ export default {
 		border: 0px;
 		color: $white;
 		margin: 0;
-		z-index: 100;	
+		z-index: 100;
+		line-height: 0;
 		@extend .fast-e;
+		
+		.icon-bar {
+		    background-color: $white;
+		    border-radius: 4px;
+		    width: 25px;
+		    transition: all 0.2s;
+		    height: 3px;
+		    display: inline-block;
+		   	margin-top: -2px;
+		   	margin-bottom: 4px;
+		}
 		&:hover{
 			color: $white;
 			text-decoration: none;		
@@ -235,7 +251,27 @@ export default {
 		.dropdown-vue-menu,.dropdown-vue-toggle{
 			text-align: left;
 		}
+		
+		.icon-bar{
+			width: 34px;
+			
+			&.top-bar {
+			    transform: rotate(45deg);
+			    transform-origin: 6px 6px;
+		  	}
+		  	
+			&.middle-bar {
+			    opacity: 0;
+			}
+			
+			&.bottom-bar {
+			    transform: rotate(-45deg);
+			    transform-origin: 8px 0px;
+			}
+		}
+		
 	}
+
 	@media (min-width:$sm){
 		#navbar{
 			position: absolute;

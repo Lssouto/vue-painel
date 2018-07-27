@@ -53,8 +53,8 @@ export default {
             @extend .fast-e;
             height: 6px;
             width: 6px;
-            border-right: 2px solid $main;
-            border-bottom: 2px solid $main;
+            border-right: 2px solid $primary;
+            border-bottom: 2px solid $primary;
             transform: rotate(45deg) translate3d(0, -50%, 0);
         }
     }
@@ -73,11 +73,11 @@ export default {
             color: $black;
             display: block;
             padding: 10px 25px;
-            border-bottom: 1px solid $main;
+            border-bottom: 1px solid $primary;
             cursor: pointer;
             font-weight: bolder;
             &:hover{
-                background-color: $main;
+                background-color: $primary;
                 color: $white;
                 border-bottom: 1px solid $white;
             }

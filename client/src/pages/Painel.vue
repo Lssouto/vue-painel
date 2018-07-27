@@ -1,17 +1,17 @@
 <template>
     <div class="container">
-        <h2 class="h-title">Examples</h2>
-        <h3 class="h-sub-title">Datatable</h3>
-        <Datepicker 
-            lang="pt-br" 
-            v-model="date" 
-            :time-picker-options="timePickerOptions" 
-            type="datetime"
-            :confirm="true"
-            :minute-step="5"
-            format="dd-MM-yyyy HH:mm:ss"
-        />
-        <div class="container table-responsive">
+            <h2 class="h-title">Examples</h2>
+            <h3 class="h-sub-title">Datatable</h3>
+            <Datepicker 
+                lang="pt-br" 
+                v-model="date" 
+                :time-picker-options="timePickerOptions" 
+                type="datetime"
+                :confirm="true"
+                :minute-step="5"
+                format="dd-MM-yyyy HH:mm:ss"
+            />
+        <div class="table-responsive">
             <table border="0" cellpadding="0" cellspacing="0">
                 <thead>
                     <tr>
@@ -24,7 +24,10 @@
                     <tr v-for="user in users" :key="user.cd">
                         <td>{{user.id}}</td>
                         <td>{{user.name}}</td>
-                        <td><el-switch v-model="user.isActive" /></td>
+                        <!--<td><el-switch v-model="user.isActive" /></td>-->
+                        <td> 
+                            <v-switch color="primary" v-model="user.isActive"></v-switch>
+                        </td>
                     </tr>
                 </tbody>
             </table>

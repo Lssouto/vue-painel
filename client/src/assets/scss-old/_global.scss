@@ -1,0 +1,178 @@
+.main{
+    color: $primary;
+}
+.secundary{
+    color: $secundary
+}
+.relative{
+    position: relative;
+}
+.none{
+    display: none;
+}
+.absolute{
+    position: absolute;
+}
+.max{
+    width: 100%;
+}
+.p-0{
+    padding: 0 !important;
+}
+.m-0{
+    margin: 0 !important
+}
+.text-right{
+    text-align: right;
+}
+.text-left{
+    text-align: left;
+}
+.text-center{
+    text-align: center;
+}
+@media  (max-width: $md){
+    .desktop-only{
+        display: none;
+    }
+}
+.container{
+    width: 100%;
+    margin: 0 auto;
+    @media (min-width:$md) {
+        width: 1190px;
+    }
+    &.table-responsive{
+        overflow-x: auto;
+    }
+}
+.bg-main{
+    background-color: $primary;
+    color: $white;
+    &.btn{
+        background-color: $primary;
+        &:hover{
+            background-color: darken($primary,10%)
+        }
+    }
+}
+.bg-secundary{
+    background-color: $secundary;
+    color: $white;
+    &.btn{
+        background-color: $secundary;
+        &:hover{
+            background-color: darken($secundary,10%)
+        }
+    }
+}
+.btn{
+    background-color: $light-gray;
+    padding: 9px 20px;
+    border: 0px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 25px;
+    font-weight: bolder;
+    border-radius: 0;
+
+    @extend .fast-e;
+}
+.flex-align{
+    display: flex;
+    flex-direction: column;
+    & > *{
+        flex: 1 1 auto;
+    }
+    @media (min-width: $sm) {
+        flex-direction: row;
+    }
+}
+.input-container {
+    position: relative;
+    margin-bottom: 30px;
+    label{
+        font-size: 18px;
+    }
+    .form-control{
+        display: block;
+        width: 100%;
+        @extend .fast-e;
+        border: 0px;
+        border-bottom: 2px solid $light-gray;
+        height: 40px;
+        &:hover,&:focus,&:active{
+            border-bottom-color: $primary;
+        }        
+        @include input-placeholder {
+            color: lighten($primary,20%);
+        }
+        &textarea{
+            height: initial;
+        }
+    }
+}
+a{
+    position: relative;
+    overflow: hidden;
+    color: $secundary;
+    &:after{
+        @include pseudo(absolute,block);
+        bottom: -2px;
+        height: 1px;
+        left: 0;
+        width: 0;
+        background-color: lighten($secundary,15%);
+        font-weight: bolder;
+        @extend .fast-e;
+    }
+
+    &:hover{
+        color: lighten($secundary,15%);
+        &:after{
+            width: 100%;
+        }
+    }
+}
+.table-responsive{
+    table{
+        width: 100%;
+        thead{
+            background-color: lighten($primary,8%);
+            & > tr > td{
+                padding: 15px;
+                color: $white;
+                &:first-child{
+                    border-right: 0px;
+                }
+                &:last-child{
+                    border-left: 0px;
+                }
+            }
+        }
+        tbody{
+            & > tr{
+                @extend .fast-e;
+                & > td{
+                    border-bottom: 1px solid $light-gray;
+                    border-top: 0px;
+                    padding: 15px;
+                    color: $black;
+                    label{
+                        justify-content: flex-start !important;
+                    }
+                }   
+                &:hover{
+                    background-color: lighten($light-gray,8%);
+                }
+            }
+        }
+    }    
+}
+
+.h-title{
+    margin: 25px 0 10px;
+}
+.h-sub-title{
+    margin: 10px 0 10px;
+}

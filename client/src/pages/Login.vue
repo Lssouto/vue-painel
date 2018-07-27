@@ -1,5 +1,5 @@
 <template>
-  <div class="login container relative">
+  <div class="login-container relative">
     <div class="painel">
       <form action="" v-on:submit.prevent="login">
         <div class="input-container">
@@ -13,8 +13,8 @@
         <div class="forgot-pwd">
           <router-link tag="a" :to="{name: 'Forgot-pwd'}">Esqueceu a senha ? </router-link>   
         </div>
-        <button class="btn bg-main">Login</button>
-        <button @click="seed()" class="btn bg-main">seed</button>
+        <button class="btn bg-primary">Login</button>
+        <button @click="seed()" class="btn bg-primary">seed</button>
       </form>
     </div>
   </div>
@@ -64,8 +64,8 @@ export default {
 
 
 <style lang="scss">
-.login.container{
-  background-image: linear-gradient(to top, $main, darken($main,10%));
+.login-container{
+  background-image: linear-gradient(to top, $primary, darken($primary,10%));
   position: fixed;
   width: 100%;
   height: 100%;

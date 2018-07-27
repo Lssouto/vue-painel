@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-
-    <c-navbar />
-
-    <div class="desktop-nav-margin">
-      <c-header />
-      <transition name="fade">
-        <router-view/>
-      </transition>
-    </div>
-
+    <v-app>
+      <c-navbar />
+  
+      <div class="desktop-nav-margin">
+        <c-header />
+        <transition>
+          <router-view/>
+        </transition>
+      </div>
+    </v-app>
   </div>
 </template>
 
@@ -26,9 +26,13 @@ export default {
 </script>
 
 <style lang="scss">
+
 @media (min-width: $sm) {
   .desktop-nav-margin{
     margin-left: 50px;
+    & > .container{
+      margin-left: 0;
+    }
   }
 }
 </style>
