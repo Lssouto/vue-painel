@@ -23,12 +23,12 @@
 					</router-link>
 				</li>
 				<li>
-					<a href="#">
+					<router-link :to="{name: 'Inf-scroll'}" tag="a">
 						<span class="icon">
 							<span class="fa fa-users"></span>
 						</span>
-						<span class="name">Users</span>
-					</a>
+						<span class="name">Infinity Scroll</span>
+					</router-link>
 				</li>
 				<li class="dropdown-nav">
 					<dropdown animation="slide">
@@ -128,7 +128,7 @@ export default {
 		width: 100%;
 		overflow-y: auto;
 		transform: translate3d(-100%,0,0);
-		@extend .fast-e;
+		@extend .slow-e;
 		
 		li{
 			.dropdown-vue{
@@ -191,6 +191,7 @@ export default {
 			}
 		}	
 		.logo{
+			transition: 0s !important;
 			position: relative;
 			background-color: lighten($black, 15%);	
 			height: 55px;

@@ -13,7 +13,15 @@
 .m-0{
     margin: 0 !important
 }
-
+.text-right{
+    text-align: right;
+}
+.text-left{
+    text-align: left;
+}
+.text-center{
+    text-align: center;
+}
 //Flex
 .flex-align{
     @include flex-align(1 1 auto);
@@ -86,4 +94,38 @@ a{
             }
         }
     }    
+}
+.flex-align{
+    display: flex;
+    flex-direction: column;
+    & > *{
+        flex: 1 1 auto;
+    }
+    @media (min-width: $sm) {
+        flex-direction: row;
+    }
+}
+.input-container {
+    position: relative;
+    margin-bottom: 30px;
+    label{
+        font-size: 18px;
+    }
+    .form-control{
+        display: block;
+        width: 100%;
+        @extend .fast-e;
+        border: 0px;
+        border-bottom: 2px solid $light-gray;
+        height: 40px;
+        &:hover,&:focus,&:active{
+            border-bottom-color: $primary;
+        }        
+        @include input-placeholder {
+            color: lighten($primary,20%);
+        }
+        &textarea{
+            height: initial;
+        }
+    }
 }

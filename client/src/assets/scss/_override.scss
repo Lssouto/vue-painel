@@ -14,9 +14,9 @@ a{
 h1,h2,h3,h4,h5,h6{
     margin: 0;
 }
-// *:focus{
-//     outline: transparent auto 0px !important;
-// }
+*:focus{
+    outline: transparent auto 0px !important;
+}
 // input.form-control:focus,textarea.form-control:focus,select.form-control:focus{
 //     box-shadow: none;
 //     border-color: rgba(0,0,0,.4);
