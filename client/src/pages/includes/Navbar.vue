@@ -23,11 +23,11 @@
 					</router-link>
 				</li>
 				<li>
-					<router-link :to="{name: 'Inf-scroll'}" tag="a">
+					<router-link :to="{name: 'Scroll-page'}" tag="a">
 						<span class="icon">
 							<span class="fa fa-users"></span>
 						</span>
-						<span class="name">InfinityScroll</span>
+						<span class="name">Scroll</span>
 					</router-link>
 				</li>
 				<li class="dropdown-nav">

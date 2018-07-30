@@ -4,7 +4,7 @@ import Login from '@/pages/Login'
 import ForgotPwd from '@/pages/Forgot-pwd'
 import Painel from '@/pages/Painel'
 import Forms from '@/pages/Forms'
-import InfScroll from '@/pages/InfScroll'
+import ScrollPage from '@/pages/ScrollPage'
 
 Vue.use(Router)
 
@@ -38,8 +38,8 @@ export default new Router({
     },
     {
       path: '/scroll',
-      name: 'Inf-scroll',
-      component: InfScroll,
+      name: 'Scroll-page',
+      component: ScrollPage,
       meta: {
         login: true
       }
