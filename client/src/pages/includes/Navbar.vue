@@ -27,7 +27,7 @@
 						<span class="icon">
 							<span class="fa fa-users"></span>
 						</span>
-						<span class="name">Infinity Scroll</span>
+						<span class="name">InfinityScroll</span>
 					</router-link>
 				</li>
 				<li class="dropdown-nav">
