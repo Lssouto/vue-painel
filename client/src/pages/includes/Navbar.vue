@@ -219,7 +219,7 @@ export default {
 		margin: 0;
 		z-index: 100;
 		line-height: 0;
-		@extend .fast-e;
+		@extend .slow-e;
 		
 		.icon-bar {
 		    background-color: $white;

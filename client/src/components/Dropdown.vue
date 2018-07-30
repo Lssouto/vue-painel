@@ -61,25 +61,28 @@ export default {
     
     .dropdown-vue-menu{
         position: absolute;
-        min-width: 200px;
+        min-width: 150px;
         top: 100%;
         left: 0;
         background-color: $white;
-        box-shadow: 0 0 2px 0 $light-gray;
-        font-size: 18px;
+        border: 1px solid $light-gray;
+        font-size: 15px;
         font-weight: normal;
+        box-shadow: 0 0 8px 2px rgba($black,.4);
         li{
             @extend .fast-e;
             color: $black;
             display: block;
             padding: 10px 25px;
-            border-bottom: 1px solid $primary;
             cursor: pointer;
             font-weight: bolder;
             &:hover{
                 background-color: $primary;
                 color: $white;
                 border-bottom: 1px solid $white;
+            }
+            &:not(:last-child){
+                border-bottom: 1px solid $primary;
             }
         }
     }
