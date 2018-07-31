@@ -5,7 +5,7 @@
   
       <div class="desktop-nav-margin">
         <c-header />
-        <transition>
+        <transition name="fade">
           <router-view/>
         </transition>
       </div>

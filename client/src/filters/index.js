@@ -16,6 +16,37 @@ Vue.filter('round', (value)=>{
 
 Vue.filter('money', (value,args)=>{
   const methods = {
+    init(value,args){
+        if (!value) {
+            return '';
+        }
+      
+        let splited = methods.splitDecimal(value);
+      
+        if(args){
+            if(args.nominal){
+                value = value + '';
+                splited = {
+                    decimal : ','+value.substring(value.length-2),
+                    number: value.substring(0,value.length-2)
+                }
+            }
+        }
+        else
+            splited = methods.splitDecimal(value);
+      
+        let formatedValue = methods.dotInsert(splited.number) + splited.decimal;
+            
+        if(args){
+            if(args['preText'])
+                formatedValue = args.preText + "" + formatedValue; 
+      
+            if(args['posText'])
+                formatedValue = formatedValue + "" + args.posText; 
+        }
+      
+        return formatedValue;
+    },
     splitDecimal : function(value) {
         value = value + '';
         value = value.replace(/[^0-9\,]+/g,"");
@@ -43,34 +74,154 @@ Vue.filter('money', (value,args)=>{
     }
   }
     
-  if (!value) {
-      return '';
-  }
+    return methods.init(value,args);  
+    
+})
 
-  let splited = methods.splitDecimal(value);
-
-  if(args){
-      if(args.nominal){
-          value = value + '';
-          splited = {
-              decimal : ','+value.substring(value.length-2),
-              number: value.substring(0,value.length-2)
-          }
-      }
-  }
-  else
-      splited = methods.splitDecimal(value);
-
-  let formatedValue = methods.dotInsert(splited.number) + splited.decimal;
-      
-  if(args){
-      if(args['preText'])
-          formatedValue = args.preText + "" + formatedValue; 
-
-      if(args['posText'])
-          formatedValue = formatedValue + "" + args.posText; 
-  }
-
-  return formatedValue;        
+Vue.filter('filter', (value,args)=>{
+    const methods = {
+        init(value, args){
+            if(!value || !args)
+                return [];
+    
+            if(!args.search) 
+                return [];
+        
+            if(args.exclude){
+        
+                if(args.field){
+        
+                    if(args.partial){
+                        return methods.excludePartialSearchOnField(value,args.search,args.field);
+                    }
+                    else{
+                        return methods.excludeSearchOnField(value,args.search,args.field)
+                    }
+        
+                }
+                else{
+        
+                    if(args.partial){
+                        return methods.excludePartialTerm(value,args.search);
+                    }
+                    else{
+                        return methods.excludeMatchTerm(value,args.search)
+                    } 
+        
+                }
+        
+            }else{
+        
+                if(args.field){
+        
+                    if(args.partial){
+                        return methods.partialSearchOnField(value,args.search,args.field);
+                    }
+                    else{
+                        return methods.searchOnField(value,args.search,args.field)
+                    }
+        
+                }
+                else{
+        
+                    if(args.partial){
+                        return methods.partialTerm(value,args.search);
+                    }
+                    else{
+                        return methods.matchTerm(value,args.search)
+                    } 
+                
+                }
+        
+            }
+            
+        },
+        partialTerm(value,search){
+            let filtered = [];
+        
+            value.forEach(val => {
+                let keys = Object.keys(val);
+                for(let key = 0; key < keys.length; key++) {
+                    let stringValue = val[keys[key]] + '';
+                    if(stringValue.indexOf(search + '') != -1){
+                        filtered.push(val)
+                        break;
+                    }
+                }
+            });
+        
+            return filtered;
+        },
+        matchTerm(value,search){
+            let filtered = [];
+        
+            value.forEach(val => {
+                let keys = Object.keys(val);
+                for(let key = 0; key < keys.length; key++) {
+                    if(val[keys[key]] == search){
+                        filtered.push(val)
+                        break;
+                    }
+                }
+            });
+        
+            return filtered;
+        },
+        partialSearchOnField(value,search,field){
+            return value.filter(val=>{
+                let stringValue = val[field] + '';
+                return stringValue.indexOf(search + '') != -1;
+            })
+        },
+        searchOnField(value,search,field){
+            return value.filter(val=>{
+                return val[field] == search;
+            })
+        },
+        excludePartialTerm(value,search){
+            let filtered = [];
+        
+            value.forEach(val => {
+                let keys = Object.keys(val);
+                for(let key = 0; key < keys.length; key++) {
+                let stringValue = val[keys[key]] + '';
+                if(stringValue.indexOf(search + '') != -1){
+                    break;
+                }
+                if(key == keys.length-1)
+                    filtered.push(val);
+                }
+            });
+            return filtered;
+        },
+        excludeMatchTerm(value,search){
+            let filtered = [];
+        
+            value.forEach(val => {
+                let keys = Object.keys(val);
+                for(let key = 0; key < keys.length; key++) {
+                if(val[keys[key]] == search){
+                    break;
+                }
+                if(key == keys.length-1)
+                    filtered.push(val)
+                }
+            });
+            return filtered;
+        },
+        excludePartialSearchOnField(value,search,field){
+            return value.filter(val=>{
+                let stringValue = val[field] + '';
+                return stringValue.indexOf(search + '') == -1;
+            })
+        },
+        excludeSearchOnField(value,search,field){
+            return value.filter(val=>{
+                return val[field] != search;
+            })
+        }
+    }
+    
+    return methods.init(value,args);
     
 })

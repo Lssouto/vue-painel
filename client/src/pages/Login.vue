@@ -1,5 +1,5 @@
 <template>
-  <div class="login-container relative">
+  <div class="login-container">
     <div class="painel">
       <form action="" v-on:submit.prevent="login">
         <div class="input-container">
@@ -72,20 +72,21 @@ export default {
   top: 0;
   left: 0;
   z-index: 100;
-}
-.painel{
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%);
-  padding: 45px;
-  width: auto;
-  border-radius: 20px;
-  background-color: $white;
-  width: 400px;
-}
-.forgot-pwd{
-  text-align: right;
+  .painel{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    padding: 45px;
+    width: auto;
+    border-radius: 20px;
+    background-color: $white;
+    width: 400px;
+  }
+  .forgot-pwd{
+    text-align: right;
+  }
+
 }
 
 </style>

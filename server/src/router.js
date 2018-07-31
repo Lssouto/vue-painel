@@ -16,7 +16,7 @@ const _all = (req, res, next) => {
     
     const AUTHTOKEN = req.header('Authorization')
     console.log(AUTHTOKEN)
-    
+
     //Header de autorizacao veio vazio ou null?
     if( AUTHTOKEN == 'null' || !AUTHTOKEN){
       

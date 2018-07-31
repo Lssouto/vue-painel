@@ -146,15 +146,16 @@ export default {
 					position: relative;
 					min-width: initial;
 					box-shadow: none;
+					border: 0px;
 					
 					li{
 						padding: 0;
 						border-bottom: 0px;
 						a{
-							line-height: 35px;
+							height: 40px;
 							color: $white;
 							font-weight: bolder;
-							display: block;
+							display: flex;
 							cursor: pointer;
 							background-color: $secundary;
 							
@@ -176,7 +177,7 @@ export default {
 			margin: 0px;
 			display: block;
 			padding: 0 15px;
-			line-height: 53px;
+			height: 50px;
 			color: $white;
 			font-weight: bolder;
 			cursor: pointer;
@@ -275,7 +276,7 @@ export default {
 
 	@media (min-width:$sm){
 		#navbar{
-			position: absolute;
+			position: fixed;
 			top: 0;
 			left: 0;
 			width: 50px;
@@ -288,6 +289,7 @@ export default {
 				position: absolute;
 				left: 50px;
 				top: 50%;
+				font-size: 15px;
 				transform: translate3d(0,-50%,0);
 			}
 			span.fa{
@@ -297,10 +299,11 @@ export default {
 			
 			a,.logo,.dropdown-vue-toggle{
 				padding: 0;
-				display: block;
 				overflow: hidden;
 				text-align: left;
+				display: flex;
 				span.icon{
+					align-self: center;
 					text-align: center;
 					width: 50px;
 					display: inline-block;
